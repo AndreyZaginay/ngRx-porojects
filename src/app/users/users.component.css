@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+}
+.mat-row:hover{
+    background-color: rgb(193, 197, 234);
+}
+.mat-column-lastName {
+    padding-right: 100px;
+}
+
+.material-icons{
+    transform: scale(1, 1);
+    transition: all 0.4s ease 0s;
+    cursor: pointer;
+}
+
+.material-icons:hover{
+    transform: scale(1.5, 1.5);
+}

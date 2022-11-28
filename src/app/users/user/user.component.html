@@ -1,0 +1,44 @@
+<div class="edit">
+  <p class="header-text">Edit form</p>
+  <form [formGroup]="userForm">
+    <mat-form-field class="example-full-width name" appearance="fill">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width username" appearance="fill">
+      <mat-label>Username</mat-label>
+      <input formControlName="username" matInput />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width phone" appearance="fill">
+      <mat-label>Phone</mat-label>
+      <input formControlName="phone" matInput />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width email" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email" />
+      <mat-error
+        *ngIf="
+          userFormEmail.hasError('email') && !userFormEmail.hasError('required')
+        "
+      >
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="userFormEmail.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width website" appearance="fill">
+      <mat-label>Website</mat-label>
+      <input formControlName="website" matInput />
+    </mat-form-field>
+  </form>
+  <div>
+    <button mat-raised-button [disabled]="!userForm.dirty" (click)="editUser()">
+      Edit
+    </button>
+    <button mat-raised-button (click)="toUsers()">Back</button>
+  </div>
+</div>
