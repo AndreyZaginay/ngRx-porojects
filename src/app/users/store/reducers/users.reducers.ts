@@ -3,16 +3,21 @@ import { UsersState } from '../../models/user';
 import * as UsersActions from '../actions/users.actions';
 
 export const initialState: UsersState = {
-    userList: []
+    userList: [],
+    isLoading: false,
 }
 
 export const usersFeature = createFeature({
     name: 'users',
     reducer: createReducer(
         initialState,
+        on(UsersActions.getUsersActions, (state) => {
+            return {...state, isLoading: true}
+        }),
         on(UsersActions.getUsersActionsSuccess, (state, { users }) => ({
             ...state,
-            userList: users 
+            userList: users ,
+            isLoading: false
         })),
         on(UsersActions.removeUserActionsSuccess, (state, { userId }) => {
             return { ...state, userList: state.userList.filter(user => user.id !== userId) }

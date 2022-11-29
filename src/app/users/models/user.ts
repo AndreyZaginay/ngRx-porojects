@@ -23,5 +23,6 @@ export interface User {
 }
 
 export interface UsersState {
-  userList: User[]
+  userList: User[];
+  isLoading: boolean;
 }

@@ -16,6 +16,8 @@ import { UsersComponent } from './users.component';
 import { usersFeature } from './store/reducers/users.reducers';
 import { UsersEffects } from './store/effects/users.effects';
 import { UserComponent } from './user/user.component';
+import { SharedsModule } from '../shareds/shareds.module';
+
 
 const routes: Routes = [
 {
@@ -29,24 +31,24 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [
-    UsersComponent,
-    UserComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    HttpClientModule,
-    MatButtonModule,
-    MatTableModule,
-    MatInputModule,
-    MatIconModule,
-    ReactiveFormsModule,
-    FormsModule,
-    StoreModule.forFeature(usersFeature),
-    EffectsModule.forFeature([UsersEffects]),
-  ],
-  providers: [UsersService]
-
-})
+    declarations: [
+        UsersComponent,
+        UserComponent,
+    ],
+    imports: [
+      CommonModule,
+      RouterModule.forChild(routes),
+      SharedsModule,
+      HttpClientModule,
+      MatButtonModule,
+      MatTableModule,
+      MatInputModule,
+      MatIconModule,
+      ReactiveFormsModule,
+      FormsModule,
+      StoreModule.forFeature(usersFeature),
+      EffectsModule.forFeature([UsersEffects]),
+    ],
+    providers: [UsersService],
+  })
 export class UsersModule { }

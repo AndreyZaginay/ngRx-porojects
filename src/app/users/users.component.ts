@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { User, UsersState } from './models/user';
 import * as UsersActions from './store/actions/users.actions';
-import { selectUsersList } from './store/selectors/users.selectors';
+import { selectUsersList, selectIsloading } from './store/selectors/users.selectors';
 import { Router } from '@angular/router';
 
 
@@ -14,7 +14,8 @@ import { Router } from '@angular/router';
 })
 export class UsersComponent implements OnInit {
   displayedColumns: string[] = ['Id', 'name', 'email', 'phone', 'website', 'editAction','deleteAction'];
-  users$: Observable<User[]> = this.store.select(selectUsersList)
+  users$: Observable<User[]> = this.store.select(selectUsersList);
+  isLoading$: Observable<boolean> = this.store.select(selectIsloading);
 
   constructor(
     private readonly store: Store<UsersState>,

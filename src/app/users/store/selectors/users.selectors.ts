@@ -13,3 +13,8 @@ export const selectUsersList = createSelector(
 export const selectUser = (userId: number) => {
   return  createSelector(featureSelector, ((state: UsersState) => state.userList.find(user => user.id === userId)!))
 }
+
+export const selectIsloading = createSelector(
+  featureSelector,
+  state => state.isLoading
+)
