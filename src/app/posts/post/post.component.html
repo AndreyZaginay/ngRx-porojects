@@ -1,0 +1,10 @@
+<div class="post" *ngIf="post$ | async as post">
+  <h1>{{ post.title }}</h1>
+  <p>{{ post.body }}</p>
+  <button (click)="toPosts()">Back</button>
+  <button (click)="toUser(post.userId)">Author of post</button>
+  <div class="comments">
+    Comments:
+    <app-comments [postId]="post.id"></app-comments>
+  </div>
+</div>

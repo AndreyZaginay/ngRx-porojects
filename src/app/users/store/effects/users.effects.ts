@@ -7,7 +7,7 @@ import { User } from '../../models/user';
 
 @Injectable()
 export class UsersEffects {
-  loadData$ = createEffect(() => {
+  getUsers$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(UsersActions.getUsersActions),
       switchMap(() => this.usersService.getUsers().pipe(
@@ -19,8 +19,8 @@ export class UsersEffects {
   removeUser$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(UsersActions.removeUserActions),
-      mergeMap((actions) => this.usersService.removeUser(actions.userId).pipe(
-        map(() => UsersActions.removeUserActionsSuccess({ userId: actions.userId }))
+      mergeMap(({ userId }) => this.usersService.removeUser(userId).pipe(
+        map(() => UsersActions.removeUserActionsSuccess({ userId }))
       ))
     )
   })
@@ -28,8 +28,8 @@ export class UsersEffects {
   editUser$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(UsersActions.editUser),
-      mergeMap((action) => this.usersService.editUser(action.updateUser).pipe(
-        map(() => UsersActions.editUserSuccess({ updateUser: action.updateUser }))
+      mergeMap(({ updateUser }) => this.usersService.editUser(updateUser).pipe(
+        map(() => UsersActions.editUserSuccess({ updateUser }))
       ))
     )
   })

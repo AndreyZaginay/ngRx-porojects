@@ -16,7 +16,7 @@ import { UsersComponent } from './users.component';
 import { usersFeature } from './store/reducers/users.reducers';
 import { UsersEffects } from './store/effects/users.effects';
 import { UserComponent } from './user/user.component';
-import { SharedsModule } from '../shareds/shareds.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 const routes: Routes = [
@@ -38,7 +38,7 @@ const routes: Routes = [
     imports: [
       CommonModule,
       RouterModule.forChild(routes),
-      SharedsModule,
+      SharedModule,
       HttpClientModule,
       MatButtonModule,
       MatTableModule,

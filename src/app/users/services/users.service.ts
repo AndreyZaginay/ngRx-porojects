@@ -13,8 +13,8 @@ export class UsersService {
     private readonly http: HttpClient, @Inject(USERS_API) private readonly api: string
   ) { }
 
-  getUsers(): Observable<any[]> {
-    return this.http.get<any[]>(this.api)
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.api)
   }
   removeUser(userId: number): Observable<{}> {
     return this.http.delete(`${ this.api }/${ userId }`);

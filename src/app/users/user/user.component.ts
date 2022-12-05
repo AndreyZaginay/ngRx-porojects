@@ -4,10 +4,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil, switchMap } from 'rxjs';
 
+import { UsersState } from './../models/user';
 import * as UsersActions from '../store/actions/users.actions';
 import { User } from '../models/user';
 import { selectUser } from './../store/selectors/users.selectors';
-import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-user',
@@ -25,10 +25,9 @@ export class UserComponent implements OnInit {
   
 
   constructor(
-    private readonly usersService: UsersService,
     private readonly router: Router,
     private readonly route: ActivatedRoute,
-    private readonly store: Store,
+    private readonly store: Store<UsersState>,
   ) { }
 
   ngOnInit(): void {

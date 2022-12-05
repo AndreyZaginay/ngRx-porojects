@@ -1,0 +1,7 @@
+<div *ngFor="let comment of comments$ | async">
+  <div class="comment">
+    <p>{{ comment.email }}</p>
+    <p>{{ comment.name }}</p>
+    <p>{{ comment.body }}</p>
+  </div>
+</div>
